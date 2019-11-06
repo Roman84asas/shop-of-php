@@ -3,7 +3,7 @@
 namespace core\base\settings;
 
 
-class Settings
+class Setting
 {
     static private $_instance;
 

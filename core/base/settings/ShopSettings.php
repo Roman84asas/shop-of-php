@@ -31,7 +31,7 @@ class ShopSettings
             return self::$_instance;
         }
 
-        self::$_instance->baseSettings = Settings::instance();
+        self::$_instance->baseSettings = Setting::instance();
         $baseProperties = self::$_instance->baseSettings->clueProperties(get_class());
 
         return self::$_instance = new self();
