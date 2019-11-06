@@ -1,23 +1,67 @@
 <?php
-defined('VG_ACCESS') or die('Access Denied');
+
+namespace core\base\settings;
 
 
-const TEMPLATE        = 'templates/default/';
-const ADMIN_TEMPLATE = 'core/admin/views/';
+class Settings
+{
+    static private $_instance;
 
-const COOKIE_VERSION = '1.0.0';
-const CRYPT_KEY      = '';
-const COOKE_TIME     = 60;
-const BLOCK_TIME     = 3;
+    private $routes = [
+        'admin'    => [
+            'name'   => 'admin',
+            'path'   => 'core/admin/controllers/',
+            'hrUrl'  => false,
+        ],
+        'settings' => [
+            'path'   => 'core/base/settings/',
+        ],
+        'plugins'  => [
+            'path'   => 'core/plugins/',
+            'hrUrl'  => false,
+        ],
+        'user'     => [
+            'path'   => 'core/user/controllers/',
+            'hrUrl'  => true,
+            'routes' => [
 
-const QTY       = 8;
-const QTY_LINKS = 3;
+            ]
+        ],
+        'default'  =>[
+            'controller'   => 'IndexController',
+            'inputMethod'  => 'inputData',
+            'outputMethod' => 'outputData',
+        ]
+    ];
 
-const ADMIN_CSS_JS = [
-    'style'  => [],
-    'script' => [],
-];
-const USER_CSS_JS = [
-    'style'  => [],
-    'script' => [],
-];
+    private function __construct()
+    {
+
+    }
+
+    private function __clone()
+    {
+
+    }
+
+    static public function get($prop)
+    {
+        return self::instance()->$prop;
+    }
+
+    static public function instance()
+    {
+        if(self::$_instance instanceof self) {
+            return self::$_instance;
+        }
+
+        return self::$_instance = new self();
+    }
+
+    public static function clueProperties ($class)
+    {
+        $baseProperties = [];
+
+    }
+
+}
