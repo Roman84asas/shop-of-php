@@ -1,4 +1,7 @@
 <?php
+
+use core\base\exception\RouteExceptions;
+
 defined('VG_ACCESS') or die('Access Denied');
 
 
@@ -22,3 +25,17 @@ const USER_CSS_JS = [
     'script' => [],
 ];
 
+/**
+ * @param $class_name
+ * @throws \core\base\exception\RouteExceptions
+ */
+function autoloadMainClasses($class_name) {
+    $class_name = str_replace('\\', '/', $class_name);
+
+    if (!@include_once $class_name . '.php') {
+        throw new RouteExceptions('Error name class required - '.$class_name);
+    }
+
+}
+
+spl_autoload_register('autoloadMainClasses');

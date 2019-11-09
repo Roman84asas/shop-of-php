@@ -5,6 +5,16 @@ namespace core\base\settings;
 
 class Setting
 {
+    private function __construct()
+    {
+
+    }
+
+    private function __clone()
+    {
+
+    }
+
     static private $_instance;
 
     private $routes = [
@@ -34,15 +44,10 @@ class Setting
         ]
     ];
 
-    private function __construct()
-    {
-
-    }
-
-    private function __clone()
-    {
-
-    }
+    private $templateArr = [
+        'text'      => ['name', 'phone', 'address'],
+        'textarea' => ['content', 'keywords']
+    ];
 
     static public function get($prop)
     {
@@ -55,12 +60,17 @@ class Setting
             return self::$_instance;
         }
 
-        return self::$_instance = new self();
+        return self::$_instance = new self;
     }
 
-    public static function clueProperties ($class)
+    public function clueProperties ($class)
     {
         $baseProperties = [];
+
+        foreach($this as $name => $item) {
+            $property = $class::get($name);
+            $baseProperties[$name] = $property[$name];
+        }
 
     }
 

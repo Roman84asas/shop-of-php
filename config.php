@@ -2,7 +2,7 @@
 defined('VG_ACCESS') or die('Access Denied');
 
 
-const SITE_URL = 'http//http://shop-of-php/';
+const SITE_URL = 'http://shop-of-php/';
 const PATH     = '/';
 
 const HOST     = 'localhost';
