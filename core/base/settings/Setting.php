@@ -69,9 +69,26 @@ class Setting
 
         foreach($this as $name => $item) {
             $property = $class::get($name);
-            $baseProperties[$name] = $property[$name];
+
+            if (is_array($property) && is_array($item)) {
+                $newProperty = array_replace_recursive($this->$name, $property);
+                $baseProperties[$name] = $newProperty;
+            }
         }
 
+    }
+
+    public function arr_merge_recursive(){
+        $arrays = func_get_args();
+        $base = array_shift($arrays);
+
+        foreach ($arrays as $array) {
+            foreach ($array as $key => $value) {
+                if (is_array($value) && is_array($base[$key])) {
+
+                }
+            }
+        }
     }
 
 }

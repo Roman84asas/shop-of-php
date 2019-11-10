@@ -3,6 +3,8 @@
 
 namespace core\base\settings;
 
+use core\base\settings\Setting;
+
 
 class ShopSettings
 {

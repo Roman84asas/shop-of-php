@@ -31,5 +31,6 @@ class RouteController
         {
         $s = Setting::get('routes');
         $al = ShopSettings::get('templateArr');
+        exit();
     }
 }
